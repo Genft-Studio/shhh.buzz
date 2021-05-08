@@ -1,4 +1,4 @@
-import beeShowingStinger from "./assets/images/bees/bee-showing-stinger.png"
+import beeShowingStinger from "../assets/images/bees/bee-showing-stinger.png"
 import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
