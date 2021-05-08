@@ -21,7 +21,7 @@ function App() {
                 <div className="App">
                     <header className="App-header">
                         <h1>Shhh.buzz</h1>
-                        A simple app for the secret network
+                        Like Snapchat, except for secrets
                     </header>
                     <Switch>
                         <Route path='/' exact>
