@@ -1,4 +1,28 @@
+$bee-yellow: #FCD434;
+$bee-dark-yellow: #F7B132;
+$bee-honey: #F49208;
+$bee-wings: #9ddceb;
+$bee-grey: #1e1e1d;
+$bee-dark: #121211;
+
+$body-bg: #000;
+//$body-color: #111;
+$body-color: $bee-yellow;
+
+$theme-colors: (
+  "primary":  $bee-wings
+);
+
 @import "~bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "Russian";
+  src: url("./assets/fonts/Russian.ttf");
+}
+
+h1, h2, h3 {
+  font-family: Russian;
+}
 
 .App {
   text-align: center;
@@ -11,13 +35,16 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  //background-color: #282c34;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  //color: white;
+  font-family: Russian;
+  margin-top: 8px;
+  margin-bottom: 30px;
 }
 
 .App-link {
@@ -33,6 +60,12 @@
   }
 }
 
+/*
 .create-token-button {
   width: 200px;
+}
+*/
+
+.form-group {
+  text-align: left;
 }

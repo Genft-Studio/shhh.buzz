@@ -4,6 +4,7 @@ import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {Link, useParams} from 'react-router-dom'
+import beeCarrying from "./assets/images/bees/bee-carrying.png"
 
 const WALLET_WORDS = 'scrap network kiss canoe bird strategy fence anger way budget globe evidence will vibrant parade dream slogan around smart daughter buyer guess measure taste'
 const CONTRACT_ADDRESS = 'secret19vc03hfsuqfsmt73c4fypg5au07lfngpcw2ytc'
@@ -112,36 +113,43 @@ export default () => {
     const ready = signingPen && address && sequence && !inProgress
 
     return (
-        <section>
-            <Form>
-                <FormGroup controlId='address'>
-                    <FormLabel>Address</FormLabel>
-                    <FormControl disabled={true} value={address}/>
-                </FormGroup>
-                {tokenId && !revealed &&
-                <>
-                    <FormGroup controlId='token_id'>
-                        <FormLabel>Token Id</FormLabel>
-                        <FormControl disabled={true} value={tokenId}/>
+        <div className="row">
+            <div className="col">
+            </div>
+            <div className="col">
+                <Form>
+                    <FormGroup controlId='address'>
+                        <FormLabel>Address</FormLabel>
+                        <FormControl disabled={true} value={address}/>
                     </FormGroup>
-                    <FormGroup controlId='burnToRevealButton'>
-                        <Button className='burn-to-reveal-button' disabled={!ready} onClick={handleBurnToReveal}>
-                            {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Burn to reveal"}
-                        </Button>
-                    </FormGroup>
-                </>
-                }
-                {revealed &&
-                <>
-                    <FormGroup controlId='revealedMessage'>
-                        <FormLabel>Revealed Message</FormLabel>
-                        <FormControl value={revealed} disabled={true}/>
-                    </FormGroup>
-                    <Link as="Button" to="/">Send another secret</Link>
-                </>
-                }
-            </Form>
-        </section>
+                    {tokenId && !revealed &&
+                    <>
+                        <FormGroup controlId='token_id'>
+                            <FormLabel>Token Id</FormLabel>
+                            <FormControl disabled={true} value={tokenId}/>
+                        </FormGroup>
+                        <FormGroup controlId='burnToRevealButton'>
+                            <Button className='burn-to-reveal-button' disabled={!ready} onClick={handleBurnToReveal}>
+                                {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Burn to reveal"}
+                            </Button>
+                        </FormGroup>
+                    </>
+                    }
+                    {revealed &&
+                    <>
+                        <FormGroup controlId='revealedMessage'>
+                            <FormLabel>Revealed Message</FormLabel>
+                            <FormControl value={revealed} disabled={true}/>
+                        </FormGroup>
+                        <Link as="Button" to="/">Send another secret</Link>
+                    </>
+                    }
+                </Form>
+                <img src={beeCarrying} className="img-fluid" />
+            </div>
+            <div className="col">
+            </div>
+        </div>
     );
 
 }
