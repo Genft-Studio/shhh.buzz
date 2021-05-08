@@ -72,7 +72,7 @@ export default () => {
                                          onChange={onChangeEvent(setMessage)}/>
                         </FormGroup>
                         <FormGroup controlId='createTokenButton' className="text-center">
-                            <Button size="lg" className='create-token-button' disabled={!ready}
+                            <Button size="lg" className='create-token-button' disabled={!ready || !message}
                                     onClick={handleCreateToken}>
                                 {inProgress ?
                                     <FontAwesomeIcon icon={faSpinner} spin/> : "Create SHHH! token"}
