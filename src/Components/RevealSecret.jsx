@@ -54,9 +54,9 @@ export default () => {
                     <>
                         <FormGroup controlId='revealedMessage'>
                             <FormLabel>Revealed Message</FormLabel>
-                            <FormControl value={revealed} disabled={true}/>
+                            <FormControl as="textarea" rows={3} value={revealed} disabled={true}/>
                         </FormGroup>
-                        <Link as="Button" to="/">Send another secret</Link>
+                        <Link as="Button" to="/new">Send another secret</Link>
                     </>
                     }
                 </Form>

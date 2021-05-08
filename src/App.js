@@ -8,8 +8,9 @@ import {
 import SetupSecret from "./Components/SetupSecret";
 import RevealSecret from "./Components/RevealSecret";
 import SecretNotFound from "./Components/SecretNotFound";
-import Welcome from "./Welcome"
+import Welcome from "./Components/Welcome"
 import {ClientProvider} from "./State/KeplrClient";
+import UnknownUrl from "./Components/UnknownUrl";
 
 export const CONTRACT_ADDRESS = 'secret19vc03hfsuqfsmt73c4fypg5au07lfngpcw2ytc'
 
@@ -34,6 +35,9 @@ function App() {
                         </Route>
                         <Route path='/:tokenId' exact>
                             <RevealSecret/>
+                        </Route>
+                        <Route path='*'>
+                            <UnknownUrl/>
                         </Route>
                     </Switch>
                 </div>
