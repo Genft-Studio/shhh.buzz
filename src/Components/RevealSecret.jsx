@@ -1,97 +1,20 @@
-import React, {useEffect, useState} from "react";
-import {encodeSecp256k1Pubkey, EnigmaUtils, pubkeyToAddress, Secp256k1Pen, SigningCosmWasmClient} from "secretjs";
+import React, {useContext, useState} from "react";
 import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import beeCarrying from "./assets/images/bees/bee-carrying.png"
 import {Link, useParams, useHistory} from 'react-router-dom'
-
-const WALLET_WORDS = 'scrap network kiss canoe bird strategy fence anger way budget globe evidence will vibrant parade dream slogan around smart daughter buyer guess measure taste'
-const CONTRACT_ADDRESS = 'secret19vc03hfsuqfsmt73c4fypg5au07lfngpcw2ytc'
-const SECRET_REST_URL = 'https://bootstrap.secrettestnet.io/'
-
-const customFees = {
-    upload: {
-        amount: [{amount: "2000000", denom: "uscrt"}],
-        gas: "2000000",
-    },
-    init: {
-        amount: [{amount: "500000", denom: "uscrt"}],
-        gas: "500000",
-    },
-    exec: {
-        amount: [{amount: "500000", denom: "uscrt"}],
-        gas: "500000",
-    },
-    send: {
-        amount: [{amount: "80000", denom: "uscrt"}],
-        gas: "80000",
-    },
-}
+import {KeplrClient} from "../State/KeplrClient";
+import {CONTRACT_ADDRESS} from "../App";
 
 export default () => {
     const {tokenId} = useParams()
+
+    const {client} = useContext(KeplrClient)
+
     const history = useHistory()
-    const [client, setClient] = useState()
-    const [signingPen, setSigningPen] = useState()
-    const [address, setAddress] = useState('')
-    const [account, setAccount] = useState({})
     const [inProgress, setInProgress] = useState(false)
     const [revealed, setRevealed] = useState('')
-
-    const {accountNumber, balance, sequence} = account || {
-        accountNumber: '',
-        balance: 0,
-        sequence: 0
-    }
-
-    useEffect(() => {
-        (async () => {
-            const pen = await Secp256k1Pen.fromMnemonic(WALLET_WORDS);
-            setSigningPen(pen)
-        })()
-    }, [])
-
-    useEffect(() => {
-        if (signingPen) {
-            const pubkey = encodeSecp256k1Pubkey(signingPen.pubkey)
-            const accAddress = pubkeyToAddress(pubkey, 'secret')
-            setAddress(accAddress)
-        }
-    }, [signingPen])
-
-    useEffect(() => {
-        if (signingPen && address) {
-            const txEncryptionSeed = EnigmaUtils.GenerateNewSeed()
-            const client = new SigningCosmWasmClient(
-                SECRET_REST_URL,
-                address,
-                (signBytes) => signingPen.sign(signBytes),
-                txEncryptionSeed, customFees
-            )
-            setClient(client)
-        }
-    }, [signingPen, address])
-
-    useEffect(() => {
-        if (client) {
-            retrieveAccount()
-        }
-    }, [client])
-
-    const retrieveAccount = async () => {
-        let account;
-        while (!account) {
-            account = await client.getAccount(address)
-                .then(a => {
-                    console.log(a)
-                    return a
-                })
-                .catch(err => console.error("request failed, re-try"))
-        }
-        console.assert(account.address === address)
-        setAccount(account)
-    }
 
     const handleBurnToReveal = async () => {
         setInProgress(true)
@@ -109,7 +32,8 @@ export default () => {
             history.replace('/not-found')
         });
     }
-    const ready = signingPen && address && sequence && !inProgress
+
+    const ready = client && !inProgress
 
     return (
         <div className="row">
