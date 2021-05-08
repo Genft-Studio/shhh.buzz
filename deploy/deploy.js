@@ -88,7 +88,7 @@ const deployContract = async () => {
     console.log('initMsg:', initMsg);
 
     const contract = await client.instantiate(
-        codeId, initMsg, "shhh.buzz " + Math.ceil(Math.random()*10000)
+        codeId, initMsg, "shhh.buzz " + Math.ceil(Math.random()*10000000)
     );
     console.log('contract: ', contract);
 
