@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
-import beeCarrying from "./assets/images/bees/bee-carrying.png"
+import beeCarrying from "../assets/images/bees/bee-carrying.png"
 import {Link, useParams, useHistory} from 'react-router-dom'
 import {KeplrClient} from "../State/KeplrClient";
 import {CONTRACT_ADDRESS} from "../App";
