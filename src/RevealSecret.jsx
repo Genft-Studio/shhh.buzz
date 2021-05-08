@@ -118,16 +118,8 @@ export default () => {
             </div>
             <div className="col">
                 <Form>
-                    <FormGroup controlId='address'>
-                        <FormLabel>Address</FormLabel>
-                        <FormControl disabled={true} value={address}/>
-                    </FormGroup>
                     {tokenId && !revealed &&
                     <>
-                        <FormGroup controlId='token_id'>
-                            <FormLabel>Token Id</FormLabel>
-                            <FormControl disabled={true} value={tokenId}/>
-                        </FormGroup>
                         <FormGroup controlId='burnToRevealButton'>
                             <Button className='burn-to-reveal-button' disabled={!ready} onClick={handleBurnToReveal}>
                                 {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Burn to reveal"}
@@ -145,7 +137,7 @@ export default () => {
                     </>
                     }
                 </Form>
-                <img src={beeCarrying} className="img-fluid" />
+                <img src={beeCarrying} className="img-fluid"/>
             </div>
             <div className="col">
             </div>
