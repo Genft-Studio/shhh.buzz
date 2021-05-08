@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.56b148b4.chunk.css",
+    "main.js": "/static/js/main.6b7ff3a6.chunk.js",
+    "main.js.map": "/static/js/main.6b7ff3a6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.de5c7556.js",
+    "runtime-main.js.map": "/static/js/runtime-main.de5c7556.js.map",
+    "static/js/2.88d09286.chunk.js": "/static/js/2.88d09286.chunk.js",
+    "static/js/2.88d09286.chunk.js.map": "/static/js/2.88d09286.chunk.js.map",
+    "static/js/3.ccc72b26.chunk.js": "/static/js/3.ccc72b26.chunk.js",
+    "static/js/3.ccc72b26.chunk.js.map": "/static/js/3.ccc72b26.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.56b148b4.chunk.css.map": "/static/css/main.56b148b4.chunk.css.map",
+    "static/js/2.88d09286.chunk.js.LICENSE.txt": "/static/js/2.88d09286.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/static/media/Russian.f87f0314.ttf",
+    "static/media/bee-carrying.dedfdf2e.png": "/static/media/bee-carrying.dedfdf2e.png",
+    "static/media/bee-pointing-right.59e0329e.png": "/static/media/bee-pointing-right.59e0329e.png",
+    "static/media/bee-showing-stinger.59123214.png": "/static/media/bee-showing-stinger.59123214.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.de5c7556.js",
+    "static/js/2.88d09286.chunk.js",
+    "static/css/main.56b148b4.chunk.css",
+    "static/js/main.6b7ff3a6.chunk.js"
+  ]
+}
