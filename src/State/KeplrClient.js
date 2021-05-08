@@ -1,6 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react'
-import {SigningCosmWasmClient} from "secretjs";
-
+import {SigningCosmWasmClient} from "secretjs"
 
 const CHAIN_ID = "holodeck-2"
 const API_URL = "https://bootstrap.secrettestnet.io/";

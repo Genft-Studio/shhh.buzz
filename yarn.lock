@@ -1282,7 +1282,7 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@iov/crypto@^2.1.0":
+"@iov/crypto@^2.1.0", "@iov/crypto@^2.5.0":
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/@iov/crypto/-/crypto-2.5.0.tgz#bcb60819fa1a83ce1323f41c014b9a72ac999dd6"
   integrity sha512-lEqrMRagPyv9S0KQG2c1OfacspHZUTyC2neyy/7mKSfOaJZABJiMzZEHi0Z/aCJOo34Wd/DQqfbaG9o2gtBKnw==

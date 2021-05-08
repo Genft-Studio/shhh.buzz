@@ -8,6 +8,7 @@ import beeShowingStinger from "./assets/images/bees/bee-showing-stinger.png"
 import beePointing from "./assets/images/bees/bee-pointing-right.png"
 import {KeplrClient} from "../State/KeplrClient";
 import {CONTRACT_ADDRESS} from "../App";
+import {Random} from "@iov/crypto";
 
 export default () => {
     const {client} = useContext(KeplrClient)
@@ -19,8 +20,13 @@ export default () => {
 
     const handleCreateToken = async () => {
         setInProgress(true)
+        const token_id = Random.getBytes(16).reduce(
+            (acc, b) => acc + b.toString(16).padStart(2, "0"),
+            ''
+        )
         let response = await client.execute(CONTRACT_ADDRESS, {
             "mint_nft": {
+                token_id,
                 public_metadata: {description: message}
             }
         }).catch(f => console.log(f));
