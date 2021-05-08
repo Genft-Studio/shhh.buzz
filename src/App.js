@@ -5,8 +5,9 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import SetupSecret from "./SetupSecret";
-import RevealSecret from "./RevealSecret";
+import SetupSecret from "./Components/SetupSecret";
+import RevealSecret from "./Components/RevealSecret";
+import SecretNotFound from "./Components/SecretNotFound";
 import Welcome from "./Welcome"
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
                     </Route>
                     <Route path='/new' exact>
                         <SetupSecret/>
+                    </Route>
+                    <Route path='/not-found' exact>
+                        <SecretNotFound/>
                     </Route>
                     <Route path='/:tokenId' exact>
                         <RevealSecret/>

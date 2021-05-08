@@ -40,7 +40,7 @@ export default () => {
     const [message, setMessage] = useState('')
     const [copied, setCopied] = useState(false)
 
-    const [linkToReveal, setLinkToReveal] = useState('')
+    const [tokenId, setTokenId] = useState('')
 
     const {accountNumber, balance, sequence} = account || {
         accountNumber: '',
@@ -102,20 +102,14 @@ export default () => {
 
         let response = await client.execute(CONTRACT_ADDRESS, {
             "mint_nft": {
-                public_metadata: {
-                    name: "Secret Sauce",
-                    description: message
-                }
+                public_metadata: { description: message }
             }
-        });
-        console.log(response)
+        }).catch(f => console.log(f));
         let result = JSON.parse(String.fromCharCode(...response.data))
-
-        console.log(result)
 
         let tokenId = result?.mint_nft?.token_id
 
-        setLinkToReveal(`/${tokenId}`)
+        setTokenId(tokenId)
 
         setMessage('')
         setInProgress(false)
@@ -131,18 +125,18 @@ export default () => {
                 <img src={beePointing} className="img-fluid" />
             </div>
             <div className="col">
-                {linkToReveal ?
+                {tokenId ?
                     <>
                         <h3>Your secret token is ready</h3>
                         <div>
-                            <CopyToClipboard text={linkToReveal} onCopy={e => setCopied(true)}>
+                            <CopyToClipboard text={`${window.location.origin}/${tokenId}`} onCopy={e => setCopied(true)}>
                                 <span>
-                                    {linkToReveal}<FontAwesomeIcon className="ml-1 mr-1" icon={faClipboard}/>
+                                    {`${window.location.origin}/${tokenId}`}<FontAwesomeIcon className="ml-1 mr-1" icon={faClipboard}/>
                                 </span>
                             </CopyToClipboard>
                             {copied && "copied"}<br/>
                         </div>
-                        <Link as='Button' to={linkToReveal}>Reveal the secret</Link>
+                        <Link as='Button' to={`/${tokenId}`}>Reveal the secret</Link>
                     </>
                     :
                     <>

@@ -3,8 +3,8 @@ import {encodeSecp256k1Pubkey, EnigmaUtils, pubkeyToAddress, Secp256k1Pen, Signi
 import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
-import {Link, useParams} from 'react-router-dom'
 import beeCarrying from "./assets/images/bees/bee-carrying.png"
+import {Link, useParams, useHistory} from 'react-router-dom'
 
 const WALLET_WORDS = 'scrap network kiss canoe bird strategy fence anger way budget globe evidence will vibrant parade dream slogan around smart daughter buyer guess measure taste'
 const CONTRACT_ADDRESS = 'secret19vc03hfsuqfsmt73c4fypg5au07lfngpcw2ytc'
@@ -30,8 +30,8 @@ const customFees = {
 }
 
 export default () => {
-    let {tokenId} = useParams();
-    console.log(tokenId)
+    const {tokenId} = useParams()
+    const history = useHistory()
     const [client, setClient] = useState()
     const [signingPen, setSigningPen] = useState()
     const [address, setAddress] = useState('')
@@ -94,21 +94,20 @@ export default () => {
     }
 
     const handleBurnToReveal = async () => {
-        console.log('Revealing secret message')
         setInProgress(true)
 
-        let response = await client.execute(CONTRACT_ADDRESS, {
+        client.execute(CONTRACT_ADDRESS, {
             "burn_nft": {
                 token_id: tokenId
             }
+        }).then(res => {
+            let result = JSON.parse(String.fromCharCode(...res.data))
+            setRevealed(result?.burn_nft?.secret?.description)
+            setInProgress(false)
+        }).catch(err => {
+            console.error(err)
+            history.replace('/not-found')
         });
-        console.log(response)
-        let result = JSON.parse(String.fromCharCode(...response.data))
-
-        console.log(result)
-
-        setRevealed(result?.burn_nft?.secret?.description)
-        setInProgress(false)
     }
     const ready = signingPen && address && sequence && !inProgress
 
