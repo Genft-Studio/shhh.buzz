@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import {encodeSecp256k1Pubkey, EnigmaUtils, pubkeyToAddress, Secp256k1Pen, SigningCosmWasmClient} from "secretjs";
 import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSpinner} from "@fortawesome/free-solid-svg-icons";
+import {faClipboard, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
+import {CopyToClipboard} from "react-copy-to-clipboard/lib/Component";
 import beeShowingStinger from "./assets/images/bees/bee-showing-stinger.png"
 import beePointing from "./assets/images/bees/bee-pointing-right.png"
 
@@ -37,6 +38,7 @@ export default () => {
     const [account, setAccount] = useState({})
     const [inProgress, setInProgress] = useState(false)
     const [message, setMessage] = useState('')
+    const [copied, setCopied] = useState(false)
 
     const [linkToReveal, setLinkToReveal] = useState('')
 
@@ -132,20 +134,19 @@ export default () => {
                 {linkToReveal ?
                     <>
                         <h3>Your secret token is ready</h3>
-
+                        <div>
+                            <CopyToClipboard text={linkToReveal} onCopy={e => setCopied(true)}>
+                                <span>
+                                    {linkToReveal}<FontAwesomeIcon className="ml-1 mr-1" icon={faClipboard}/>
+                                </span>
+                            </CopyToClipboard>
+                            {copied && "copied"}<br/>
+                        </div>
                         <Link as='Button' to={linkToReveal}>Reveal the secret</Link>
                     </>
                     :
                     <>
                         <Form>
-                            <FormGroup controlId='address'>
-                                <FormLabel>Address</FormLabel>
-                                <FormControl disabled={true} value={address}/>
-                            </FormGroup>
-                            <FormGroup controlId='accountNumber'>
-                                <FormLabel>Account number</FormLabel>
-                                <FormControl disabled={true} value={accountNumber}/>
-                            </FormGroup>
                             <FormGroup controlId='message'>
                                 <FormLabel>Message</FormLabel>
                                 <FormControl as="textarea" rows={3} value={message} onChange={onChangeEvent(setMessage)}/>
