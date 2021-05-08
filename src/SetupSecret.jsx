@@ -4,6 +4,8 @@ import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
+import beeShowingStinger from "./assets/images/bees/bee-showing-stinger.png"
+import beePointing from "./assets/images/bees/bee-pointing-right.png"
 
 const WALLET_WORDS = 'scrap network kiss canoe bird strategy fence anger way budget globe evidence will vibrant parade dream slogan around smart daughter buyer guess measure taste'
 const CONTRACT_ADDRESS = 'secret19vc03hfsuqfsmt73c4fypg5au07lfngpcw2ytc'
@@ -122,37 +124,45 @@ export default () => {
     const onChangeEvent = fn => ({target: {value}}) => fn(value)
 
     return (
-        <section>
-            <Form>
-                <FormGroup controlId='address'>
-                    <FormLabel>Address</FormLabel>
-                    <FormControl disabled={true} value={address}/>
-                </FormGroup>
-                <FormGroup controlId='accountNumber'>
-                    <FormLabel>Account number</FormLabel>
-                    <FormControl disabled={true} value={accountNumber}/>
-                </FormGroup>
+        <div className="row">
+            <div className="col">
+                <img src={beePointing} className="img-fluid" />
+            </div>
+            <div className="col">
                 {linkToReveal ?
                     <>
-                        <FormGroup controlId='tokenId'>
-                            <Link as='Button' to={linkToReveal}>Reveal the secret</Link>
-                        </FormGroup>
+                        <h3>Your secret token is ready</h3>
+
+                        <Link as='Button' to={linkToReveal}>Reveal the secret</Link>
                     </>
                     :
                     <>
-                        <FormGroup controlId='message'>
-                            <FormLabel>Message</FormLabel>
-                            <FormControl value={message} onChange={onChangeEvent(setMessage)}/>
-                        </FormGroup>
-                        <FormGroup controlId='createTokenButton'>
-                            <Button className='create-token-button' disabled={!ready} onClick={handleCreateToken}>
-                                {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Create SHHH! token"}
-                            </Button>
-                        </FormGroup>
+                        <Form>
+                            <FormGroup controlId='address'>
+                                <FormLabel>Address</FormLabel>
+                                <FormControl disabled={true} value={address}/>
+                            </FormGroup>
+                            <FormGroup controlId='accountNumber'>
+                                <FormLabel>Account number</FormLabel>
+                                <FormControl disabled={true} value={accountNumber}/>
+                            </FormGroup>
+                            <FormGroup controlId='message'>
+                                <FormLabel>Message</FormLabel>
+                                <FormControl as="textarea" rows={3} value={message} onChange={onChangeEvent(setMessage)}/>
+                            </FormGroup>
+                            <FormGroup controlId='createTokenButton' className="text-center">
+                                <Button size="lg" className='create-token-button' disabled={!ready} onClick={handleCreateToken}>
+                                    {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Create SHHH! token"}
+                                </Button>
+                            </FormGroup>
+                        </Form>
                     </>
                 }
-            </Form>
-        </section>
+            </div>
+            <div className="col">
+                <img src={beeShowingStinger} className="img-fluid" />
+            </div>
+        </div>
     );
 
 }
