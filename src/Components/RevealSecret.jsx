@@ -36,33 +36,40 @@ export const RevealSecret = () => {
     const ready = client && !inProgress
 
     return (
-        <div className="row">
-            <div className="col">
-            </div>
-            <div className="col">
-                <Form>
-                    {tokenId && !revealed &&
-                    <>
-                        <FormGroup controlId='burnToRevealButton'>
-                            <Button className='burn-to-reveal-button' disabled={!ready} onClick={handleBurnToReveal}>
-                                {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Burn to reveal"}
-                            </Button>
-                        </FormGroup>
-                    </>
-                    }
-                    {revealed &&
-                    <>
-                        <FormGroup controlId='revealedMessage'>
-                            <FormLabel>Revealed Message</FormLabel>
-                            <FormControl as="textarea" rows={3} value={revealed} disabled={true}/>
-                        </FormGroup>
-                        <Link as="Button" to="/new">Send another secret</Link>
-                    </>
-                    }
-                </Form>
-                <img src={beeCarrying} className="img-fluid" alt="bee carrying bucket of honey" />
-            </div>
-            <div className="col">
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col">
+                </div>
+                <div className="col">
+                    <Form>
+                        {tokenId && !revealed &&
+                        <>
+                            <h4>Burn token to reveal secret message.</h4>
+                            <FormGroup controlId='burnToRevealButton' className="text-center">
+                                <Button className='burn-to-reveal-button mt-4' variant="outline-primary" size="lg" disabled={!ready} onClick={handleBurnToReveal}>
+                                    {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Burn to Reveal"}
+                                </Button>
+                            </FormGroup>
+                        </>
+                        }
+                        {revealed &&
+                        <>
+                            <FormGroup controlId='revealedMessage'>
+                                <FormLabel>Revealed Message</FormLabel>
+                                <FormControl as="textarea" rows={3} value={revealed} disabled={true}/>
+                            </FormGroup>
+                            <Link to="/new">
+                                <Button variant="outline-primary">
+                                    Send another secret
+                                </Button>
+                            </Link>
+                        </>
+                        }
+                    </Form>
+                    <img src={beeCarrying} className="img-fluid mt-5" alt="bee carrying bucket of honey" />
+                </div>
+                <div className="col">
+                </div>
             </div>
         </div>
     );

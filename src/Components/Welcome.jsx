@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export const Welcome = () => {
     return (
-        <div className="XXXcontainer welcome">
+        <div className="container-fluid welcome">
             <div className="row mb-5">
                 <div className="col">
                     <Link to="/new">
