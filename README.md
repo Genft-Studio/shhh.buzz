@@ -1,3 +1,40 @@
+# Shhh!
+
+## Description
+
+**[Shhh!](https://shhh.buzz)** is a one-time-read messaging system that uses Secret Network to securely store messages and deliver secrets like passwords, private keys, credit card information, api keys, etc. It isn't like other secret data stores, though. Once a message is retrieved, it is burned and can't be retrieved again.
+
+To try it out, install Keplr wallet (https://chrome.google.com/webstore/detail/keplr/dmkamcknogkgcdfhhbddcghachkejeap?hl=en), load it with some holodeck-2 testnet tokens (https://faucet.secrettestnet.io/), then go to https://shhh.buzz/ to store a secret message.
+
+After your secret is stored, you get a URL to retrieve the secret. Send it to the person you want to share your secret with via email, slack, twitter DM, or whatever. When they click the link, they are taken to the page where they can retrieve and burn the secret.
+
+Once the secret is retrieved, it is gone forever, so you don't have to worry about prying eyes discovering the secret in a server log or a centralized database.
+
+Built by Endowl 🦉
+------------------------
+**[Endowl](https://endowl.com)** brings payable-on-death functionality to blockchain assets. We built Shhh! as a way to experiment with Secret Network. We wanted to evaluate whether it will work as a decentralized datastore for sensitive estate planning data.
+
+Using the sealed data mechanism of SNIP-721, we believe that we can use our life event oracle to unlock the sensitive estate planning data when the time is right.
+
+## How It's Made
+
+Under the hood, **Shhh!** generates NFTs on the Secret network where the metadata is only revealed when the token is burned. The smart contract code is based on the SNIP-721 reference implementation and can be found at https://github.com/endowl/secret-robot. Changes to the reference implementation were:
+
+- Allow anyone to mint tokens
+- Tokens can only be minted for yourself
+- Anyone can burn a token to reveal the secret
+- Functionality around transferring, sending, minter management, and metadata queries was disabled.
+- Unit tests were organized to be easier to work with
+
+Additionally, secret data can be sealed. Sealed data can only be retrieved after the Reveal method is called by the owner of the token or an oracle that they designate.
+
+A frontend webapp was built using react and the secretjs package. It requires Keplr to be installed and funded with secret / holodeck-2 tokens. Keplr handles the signing of requests. The source code can be found at https://github.com/endowl/shhh.buzz/tree/main.
+
+The application is available at https://shhh.buzz. The contract is running on the secret test network, holodeck-2. Your Keplr wallet needs to be funded with holodeck-2 tokens to pay for gas.
+
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -2,12 +2,12 @@ import beeAngry from "../assets/images/bees/bee-angry.png"
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 
-export default () =>
+export const UnknownUrl = () =>
     <>
         <div className="row mb-5">
             <div className="col-sm"></div>
             <div className="col-sm">
-                <img src={beeAngry} className="img-fluid"/>
+                <img src={beeAngry} className="img-fluid" alt="angry bee" />
             </div>
             <div className="col-sm"></div>
         </div>
@@ -26,3 +26,5 @@ export default () =>
             </div>
         </div>
     </>
+
+export default UnknownUrl
