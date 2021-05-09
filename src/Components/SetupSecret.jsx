@@ -10,7 +10,7 @@ import {KeplrClient} from "../State/KeplrClient";
 import {CONTRACT_ADDRESS} from "../App";
 import {Random} from "@iov/crypto";
 
-export default () => {
+export const SetupSecret = () => {
     const {client} = useContext(KeplrClient)
     const [inProgress, setInProgress] = useState(false)
     const [message, setMessage] = useState('')
@@ -91,3 +91,5 @@ export default () => {
         </div>
     );
 }
+
+export default SetupSecret

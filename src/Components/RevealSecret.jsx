@@ -7,7 +7,7 @@ import {Link, useParams, useHistory} from 'react-router-dom'
 import {KeplrClient} from "../State/KeplrClient";
 import {CONTRACT_ADDRESS} from "../App";
 
-export default () => {
+export const RevealSecret = () => {
     const {tokenId} = useParams()
 
     const {client} = useContext(KeplrClient)
@@ -68,3 +68,5 @@ export default () => {
     );
 
 }
+
+export default RevealSecret
