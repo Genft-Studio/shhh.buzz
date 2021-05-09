@@ -4,22 +4,20 @@ import {Button} from "react-bootstrap";
 import beeSleepy from "../assets/images/bees/bee-sleepy.png"
 
 export const SecretNotFound = () =>
-    <>
-        <h4>That secret isn't available</h4>
-        <Link to="/">
-            <Button className="mt-4 mb-5">
-                Create a new secret
-            </Button>
-        </Link>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col">
-                    <img src={beeSleepy} alt="confused bee" className="img-fluid" />
-                </div>
-                <div className="col"></div>
+    <div className="container-fluid">
+        <div className="row">
+            <div className="col-5 mt-5">
+                <h4>404: Secret Not Found</h4>
+                <Link to="/">
+                    <Button className="mt-4 mb-5" variant="outline-primary" size="lg">
+                        Create New Secret
+                    </Button>
+                </Link>
+            </div>
+            <div className="col-7">
+                <img src={beeSleepy} alt="confused bee" className="img-fluid" />
             </div>
         </div>
-    </>
+    </div>
 
 export default SecretNotFound

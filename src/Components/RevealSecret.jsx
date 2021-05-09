@@ -3,6 +3,7 @@ import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import beeCarrying from "../assets/images/bees/bee-carrying.png"
+import beeSitting from "../assets/images/bees/bee-sitting.png"
 import {Link, useParams, useHistory} from 'react-router-dom'
 import {KeplrClient} from "../State/KeplrClient";
 import {CONTRACT_ADDRESS} from "../App";
@@ -37,23 +38,34 @@ export const RevealSecret = () => {
 
     return (
         <div className="container-fluid">
-            <div className="row">
-                <div className="col">
-                </div>
-                <div className="col">
-                    <Form>
-                        {tokenId && !revealed &&
-                        <>
+            {tokenId && !revealed &&
+            <>
+                <div className="row">
+                    <div className="col-2">
+                    </div>
+                    <div className="col-8">
+                        <Form>
                             <h4>Burn token to reveal secret message.</h4>
                             <FormGroup controlId='burnToRevealButton' className="text-center">
                                 <Button className='burn-to-reveal-button mt-4' variant="outline-primary" size="lg" disabled={!ready} onClick={handleBurnToReveal}>
                                     {inProgress ? <FontAwesomeIcon icon={faSpinner} spin/> : "Burn to Reveal"}
                                 </Button>
                             </FormGroup>
-                        </>
-                        }
-                        {revealed &&
-                        <>
+                        </Form>
+                        <img src={beeCarrying} className="img-fluid mt-5" alt="bee carrying bucket of honey" />
+                    </div>
+                    <div className="col-2">
+                    </div>
+                </div>
+            </>
+            }
+            {revealed &&
+            <>
+                <div className="row">
+                    <div className="col-2">
+                    </div>
+                    <div className="col-8">
+                        <Form>
                             <FormGroup controlId='revealedMessage'>
                                 <FormLabel>Revealed Message</FormLabel>
                                 <FormControl as="textarea" rows={3} value={revealed} disabled={true}/>
@@ -63,14 +75,14 @@ export const RevealSecret = () => {
                                     Send another secret
                                 </Button>
                             </Link>
-                        </>
-                        }
-                    </Form>
-                    <img src={beeCarrying} className="img-fluid mt-5" alt="bee carrying bucket of honey" />
+                        </Form>
+                        <img src={beeSitting} className="img-fluid mt-5" alt="bee sitting with a bucket of honey" />
+                    </div>
+                    <div className="col-2">
+                    </div>
                 </div>
-                <div className="col">
-                </div>
-            </div>
+            </>
+            }
         </div>
     );
 
