@@ -7,7 +7,7 @@ export default () =>
         <div className="row mb-5">
             <div className="col-sm"></div>
             <div className="col-sm">
-                <img src={beeAngry} className="img-fluid"/>
+                <img src={beeAngry} className="img-fluid" alt="angry bee" />
             </div>
             <div className="col-sm"></div>
         </div>

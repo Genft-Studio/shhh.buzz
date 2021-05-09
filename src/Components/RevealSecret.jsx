@@ -60,7 +60,7 @@ export default () => {
                     </>
                     }
                 </Form>
-                <img src={beeCarrying} className="img-fluid"/>
+                <img src={beeCarrying} className="img-fluid" alt="bee carrying bucket of honey" />
             </div>
             <div className="col">
             </div>

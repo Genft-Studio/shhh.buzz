@@ -20,7 +20,7 @@ export const Welcome = () => {
                     <h1>Temporary</h1>
                 </div>
                 <div className="col-sm">
-                    <img src={beeShowingStinger} className="img-fluid" />
+                    <img src={beeShowingStinger} className="img-fluid" alt="bee showing stinger" />
                 </div>
                 <div className="col-sm">
                     <h1>Secret</h1>

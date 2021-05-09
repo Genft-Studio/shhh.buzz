@@ -44,7 +44,7 @@ export default () => {
     return (
         <div className="row">
             <div className="col">
-                <img src={beePointing} className="img-fluid"/>
+                <img src={beePointing} className="img-fluid" alt="bee pointing" />
             </div>
             <div className="col">
                 {ready && tokenId &&
@@ -86,7 +86,7 @@ export default () => {
                 }
             </div>
             <div className="col">
-                <img src={beeShowingStinger} className="img-fluid"/>
+                <img src={beeShowingStinger} className="img-fluid" alt="bee showing stinger" />
             </div>
         </div>
     );
