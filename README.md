@@ -1,5 +1,9 @@
 # Shhh!
 
+https://hack.ethglobal.co/showcase/shhh--recohuXNn6INLeK0m
+
+It's like Snapchat for secrets. Try it out at https://shhh.buzz.
+
 ## Description
 
 **[Shhh!](https://shhh.buzz)** is a one-time-read messaging system that uses Secret Network to securely store messages and deliver secrets like passwords, private keys, credit card information, api keys, etc. It isn't like other secret data stores, though. Once a message is retrieved, it is burned and can't be retrieved again.
